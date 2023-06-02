@@ -15,7 +15,7 @@ services:
 
     # Dcokerfile内でwebコンテナ内にファイルをインストールしたが、それをローカルのどこのディレクトエリとマウントするか
     volumes:
-      - .:/eisan_app
+      - .:/nesage_app
       
     ports:
       - "3000:3000"
