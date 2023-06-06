@@ -1,4 +1,6 @@
 <h1>ユーザー設定</h1>
+<%= link_to 'ログイン', login_path %>
+
 
 <%= form_with(model: @setting, url: settings_path, method: :patch) do |form| %>
   <div class="field">
@@ -28,5 +30,20 @@
   </div>
 <% end %>
 
+<h2>メルカリログイン</h2>
 
+<%= form_with(url: login_path, method: :post) do |form| %>
+  <div class="field">
+    <%= form.label :username %>
+    <%= form.text_field :username %>
+  </div>
 
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "ログイン" %>
+  </div>
+<% end %>
