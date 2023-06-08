@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+
+ /* styles.css */
+
+/* ヘッダーのスタイル */
+h1 {
+    color: #333; /* ヘッダーテキストの色 */
+    font-size: 24px; /* ヘッダーテキストのフォントサイズ */
+    margin-bottom: 20px; /* ヘッダーの下マージン */
+  }
+  
+  /* フォームのスタイル */
+  form {
+    margin-bottom: 20px; /* フォームの下マージン */
+  }
+  
+  .field {
+    margin-bottom: 10px; /* フィールドの下マージン */
+  }
+  
+  /* アクションボタンのスタイル */
+  .actions {
+    margin-top: 10px; /* アクションボタンの上マージン */
+  }
+  
+  /* 設定の表示スタイル */
+  .setting {
+    margin-bottom: 20px; /* 設定の下マージン */
+  }
+  
+  .setting p {
+    margin-bottom: 5px; /* 設定のテキストの下マージン */
+  }
+  
+  .setting strong {
+    font-weight: bold; /* 設定のテキストの太字 */
+  }
+  
+  .setting a {
+    margin-right: 10px; /* 設定のリンクの右マージン */
+  }
+  
