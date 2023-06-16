@@ -7,13 +7,14 @@ gem 'mechanize'
 gem 'nokogiri'
 gem 'kaminari'
 
+#ウェブスクレイピング
+gem 'selenium-webdriver', '>= 4.0.0.rc1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-
 gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
 
 #ログイン実装
-gem 'devise'
+gem 'devise', '>= 0'
 gem 'i18n', '1.13.0'
 
 

@@ -1,15 +1,26 @@
 <h1>ユーザー設定</h1>
-<%= link_to 'ログイン', login_path %>
 
+<% unless user_signed_in? %>
+  <%= link_to "ログイン", new_user_session_path %>
+<% end %>
+
+
+<% if user_signed_in? %>
+  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= link_to 'スクレイピング画面へ', scrape_product_path, method: :post %>
+<% end %>
 
 <%= form_with(model: @setting, url: settings_path, method: :patch) do |form| %>
   <div class="field">
-    <%= form.label :price_drop_time %>
+    <%= form.label :値下げ時間の設定 %>
     <%= form.time_field :price_drop_time %>
   </div>
 
   <div class="field">
-    <%= form.label :price_drop_amount %>
+    <%= form.label :値下げ価格の設定 %>
     <%= form.number_field :price_drop_amount %>
   </div>
 
