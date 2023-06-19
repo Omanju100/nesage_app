@@ -9,6 +9,7 @@ gem 'kaminari'
 
 #ウェブスクレイピング
 gem 'selenium-webdriver', '>= 4.0.0.rc1'
+gem 'webdrivers'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7', '>= 6.1.7.3'
@@ -46,8 +47,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # 他のgemの設定...
-  gem 'devise'
+
+  #binding.pryを使用してデバッグする
+gem 'pry-rails'
+
 end
 
 group :development do
@@ -64,7 +67,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end

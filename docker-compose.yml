@@ -21,14 +21,13 @@ services:
     stdin_open: true
     tty: true
   selenium_chrome:
-    image: selenium/standalone-chrome
+    image: selenium/standalone-chrome-debug
+    shm_size: 300m
+    logging:
+      driver: none
     ports:
-      - '4444:4444'
-      - '5900:5900'
-    shm_size: '300m'
-    environment:
-      - JAVA_OPTS=-Dwebdriver.chrome.whitelistedIps=
-      - CHROME_OPTS=--no-sandbox,--disable-dev-shm-usage,--disable-gpu
+      - 4444:4444
+      - 5900:5900
 
 volumes:
   mysql-data:

@@ -3,5 +3,21 @@
 <p>スクレイピング機能の説明やフォームなどをここに追加してください。</p>
 
 <%= form_tag(scrape_product_path, method: :post) do %>
-  <%= submit_tag('スクレイピング実行') %>
-<% end %>
+    <div>
+      <%= label_tag(:product_url, "Product URL:") %>
+      <%= text_field_tag(:product_url) %>
+    </div>
+  
+    <div>
+      <%= label_tag(:email, "Email:") %>
+      <%= text_field_tag(:email) %>
+    </div>
+  
+    <div>
+      <%= label_tag(:password, "Password:") %>
+      <%= password_field_tag(:password) %>
+    </div>
+  
+    <%= submit_tag('スクレイピング実行') %>
+  <% end %>
+  

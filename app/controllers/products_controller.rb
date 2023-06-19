@@ -1,4 +1,4 @@
-require_relative '../lib/scraper'
+#require_relative '../lib/scraper'
 
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: :scrape
@@ -16,6 +16,9 @@ class ProductsController < ApplicationController
   def scrape
     # スクレイピングの処理を実装する
     # ログインユーザーの認証を行い、必要な情報を取得・処理する
+    product_url = params[:product_url]
+    email = params[:email]
+    password = params[:password]
 
     scraper = Scraper.new
     scraped_data = scraper.scrape_product_page('メルカリの商品URL', 'メルカリのログインに使用するメールアドレス', 'メルカリのログインパスワード')

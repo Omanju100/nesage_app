@@ -1,21 +1,19 @@
-require 'selenium-webdriver'
-
-require 'selenium-webdriver'
+# Railsなのでこれは不要！！
+# require 'selenium-webdriver'
+# require 'selenium-webdriver'
 
 class Scraper
   def initialize
-    chromedriver_path = '/usr/local/bin/chromedriver'  # 実際のパスに置き換えてください
+    options = Selenium::WebDriver::Chrome::Options.new
+    # options.add_argument('--headless') # ヘッドレスモードでブラウザを起動するオプション
 
-    Selenium::WebDriver::Chrome::Service.driver_path = chromedriver_path
-
-    # ブラウザの指定(Chrome)
     @driver = Selenium::WebDriver.for(
       :remote,
-      url: "http://selenium_chrome:4444/wd/hub", # selenium_chromeコンテナにつなげてあげる
-      desired_capabilities: :chrome
+      options: options,
+      url: "http://selenium_chrome:4444/wd/hub" # selenium_chromeコンテナにつなげてあげる
+      # desired_capabilities: :chrome # これは不要です！！
     )
   end
-
 
   def scrape_product_page(product_url, email, password)
     # メルカリのログインページに移動
@@ -44,7 +42,6 @@ class Scraper
     scraped_data = { product_name: product_name, price: price }
 
     @driver.quit
-
     return scraped_data
   end
 end
