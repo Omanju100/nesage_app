@@ -21,7 +21,7 @@ services:
     stdin_open: true
     tty: true
   selenium_chrome:
-    image: selenium/standalone-chrome-debug
+    image: seleniarm/standalone-chromium
     shm_size: 300m
     logging:
       driver: none
