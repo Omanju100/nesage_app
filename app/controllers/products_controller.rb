@@ -19,12 +19,17 @@ class ProductsController < ApplicationController
     product_url = params[:product_url]
     email = params[:email]
     password = params[:password]
-
+    
+    # Settingからprice_dropを取得
+    settings = Setting.first
+    price_drop = settings.price_drop_amount
+  
     scraper = Scraper.new
-    scraped_data = scraper.scrape_product_page('メルカリの商品URL', 'メルカリのログインに使用するメールアドレス', 'メルカリのログインパスワード')
-
+    scraped_data = scraper.scrape_product_page(product_url, email, password, price_drop)
+  
     render json: scraped_data
   end
+  
 
   def scrape_page
     render 'scrape'

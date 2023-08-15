@@ -24,6 +24,12 @@ class SettingsController < ApplicationController
     redirect_to settings_path, notice: '設定が削除されました。'
   end
 
+  #価格の設定
+  def price_drop_amount
+    setting = Setting.first
+    setting.price_drop_amount
+  end  
+
   private
 
   def set_setting
