@@ -33,11 +33,11 @@ class Scraper
     # メールアドレスを入力するフィールドを見つけて、値を送信
     @wait.until { @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[1]/div/label/div/input').displayed? }
     email_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[1]/div/label/div/input')
-    email_field.send_keys('08035423344')
+    email_field.send_keys(email)
     
     # パスワードを入力するフィールドを見つけて、値を送信
     password_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[2]/div/label/div/input')
-    password_field.send_keys(19890212)
+    password_field.send_keys(password)
     
     # ログインボタンをクリック
     @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[3]/button').click

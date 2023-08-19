@@ -43,7 +43,7 @@
 
 <h2>メルカリログイン</h2>
 
-<%= form_with(url: login_path, method: :post) do |form| %>
+<%= form_with(url: scrape_product_path, method: :post) do |form| %>
   <div class="field">
     <%= form.label :username %>
     <%= form.text_field :username %>
@@ -55,6 +55,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "ログイン" %>
+    <%= form.submit "スクレイピング開始" %>
   </div>
 <% end %>
