@@ -29,28 +29,26 @@
   </div>
 <% end %>
 
-<% @settings.each do |setting| %>
-  <div>
-    <!-- 設定の表示 -->
-    <p><strong>設定ID:</strong> <%= setting.id %></p>
-    <p><strong>価格ドロップ時間:</strong> <%= setting.price_drop_time %></p>
-    <p><strong>価格ドロップ量:</strong> <%= setting.price_drop_amount %></p>
+<div>
+  <!-- 設定の表示 -->
+  <p><strong>価格ドロップ時間:</strong> <%= @setting.price_drop_time %></p>
+  <p><strong>価格ドロップ量:</strong> <%= @setting.price_drop_amount %></p>
 
-    <%= link_to '詳細', setting_path(setting) %>
-    <%= link_to '削除', delete_setting_path(setting), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-  </div>
-<% end %>
+  <%= link_to '詳細', setting_path(@setting) if @setting.persisted? %>
+  <%= link_to '削除', setting_path(@setting), method: :delete, data: { confirm: '本当に削除しますか？' } if @setting.persisted? %>
+</div>
+
 
 <h2>メルカリログイン</h2>
 
 <%= form_with(url: scrape_product_path, method: :post) do |form| %>
   <div class="field">
-    <%= form.label :username %>
+    <%= form.label :メールアドレスまたは電話番号 %>
     <%= form.text_field :username %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
+    <%= form.label :パスワード %>
     <%= form.password_field :password %>
   </div>
 
