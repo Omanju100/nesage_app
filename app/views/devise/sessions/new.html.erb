@@ -1,29 +1,55 @@
-<h2>Log in</h2>
+<div class="login-container">
+    <h2>メルカリ値下げアプリログイン</h2>
 
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+            <%= f.label :メールアドレス %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
 
+        <div class="field">
+            <%= f.label :パスワード %>
+            <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
 
+        <% if devise_mapping.rememberable? %>
+            <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+            </div>
+        <% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="actions">
+            <%= f.submit "ログイン" %>
+        </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <%= render "devise/shared/links" %>
+</div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+<style>
+.login-container {
+    max-width: 500px; /* この幅は必要に応じて調整してください */
+    margin: 40px auto; /* 上下のマージンと自動の左右マージンで中央寄せ */
+    padding: 20px;
+    border: 1px solid #ccc; /* オプションのボーダー */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* オプションのボックスシャドウ */
+}
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+.field, .actions {
+    margin-bottom: 20px;
+}
 
-<%= render "devise/shared/links" %>
+.actions input[type="submit"] {
+    background-color: #007BFF; /* ボタンの背景色 */
+    color: white; /* テキストの色 */
+    padding: 10px 20px; /* ボタンのパディング */
+    border: none; /* ボーダーを削除 */
+    border-radius: 4px; /* ボタンの角を丸く */
+    cursor: pointer; /* マウスカーソルを手に変更 */
+}
+
+.actions input[type="submit"]:hover {
+    background-color: #0056b3; /* ボタンをホバーしたときの背景色 */
+}
+</style>

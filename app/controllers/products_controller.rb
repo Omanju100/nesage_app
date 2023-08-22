@@ -17,7 +17,9 @@ class ProductsController < ApplicationController
     # スクレイピングの処理を実装する
     # ログインユーザーの認証を行い、必要な情報を取得・処理する
     product_url = params[:product_url]
-    email = params[:email]
+    
+    # メルカリのログイン情報を入力
+    email = params[:username]
     password = params[:password]
     
     # Settingからprice_dropを取得
@@ -29,6 +31,7 @@ class ProductsController < ApplicationController
   
     render json: scraped_data
   end
+  
   
 
   def scrape_page

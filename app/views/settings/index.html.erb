@@ -1,44 +1,79 @@
 <div class="container">
-  <h1>メルカリ値下げアプリ</h1>
+    <h1>ユーザー設定</h1>
 
-  <div class="header-links">
-  <% unless user_signed_in? %>
-    <%= link_to "ログイン", new_user_session_path, class: 'btn' %>
-  <% end %>
+    <div class="header-links">
+        <% unless user_signed_in? %>
+            <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+        <% end %>
 
-  <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'btn' %>
-    <%= link_to 'スクレイピング画面へ', scrape_product_path, method: :post, class: 'btn' %>
-  <% end %>
-</div>
-
-
-  <%= form_with(model: @setting, url: settings_path, method: :patch, class: 'setting-form') do |form| %>
-    <div class="field">
-      <%= form.label :値下げ時間の設定 %>
-      <%= form.time_field :price_drop_time %>
+        <% if user_signed_in? %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+        <% end %>
     </div>
 
-    <div class="field">
-      <%= form.label :値下げ価格の設定 %>
-      <%= form.number_field :price_drop_amount %>
-    </div>
+    <%= form_with(model: @setting, url: settings_path, method: :patch) do |form| %>
+        <div class="field">
+            <%= form.label :値下げ価格の設定 %>
+            <%= form.number_field :price_drop_amount %>
+        </div>
 
-    <div class="actions">
-      <%= form.submit "保存" %>
-    </div>
-  <% end %>
+        <div class="price-drop-display">
+            <span class="price-drop-label">現在の価格ドロップ量:</span>
+            <span class="price-drop-value">
+                <%= @setting.price_drop_amount ? "#{@setting.price_drop_amount} 円" : "設定されていません" %>
+            </span>
+        </div>
 
-  <div class="settings-list">
-    <% @settings.each do |setting| %>
-      <div class="setting-card">
-        <p><strong>設定ID:</strong> <%= setting.id %></p>
-        <p><strong>価格ドロップ時間:</strong> <%= setting.price_drop_time %></p>
-        <p><strong>価格ドロップ量:</strong> <%= setting.price_drop_amount %></p>
-
-        <%= link_to '詳細', setting_path(setting) %>
-        <%= link_to '削除', delete_setting_path(setting), method: :delete, data: { confirm: '本当に削除しますか？' } %>
-      </div>
+        <div class="actions">
+            <%= form.submit "保存", class: "btn" %>
+            <%= link_to '削除', setting_path(@setting), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn red-button" if @setting.persisted? %>
+        </div>
     <% end %>
-  </div>
+
+    <%= form_with(url: scrape_product_path, method: :post) do |form| %>
+        <div class="field">
+            <%= form.label :メルカリログイン用メールアドレスまたは電話番号 %>
+            <%= form.text_field :username %>
+        </div>
+
+        <div class="field">
+            <%= form.label :メルカリログイン用パスワード %>
+            <%= form.password_field :password %>
+        </div>
+
+        <div class="actions">
+            <%= form.submit "スクレイピング開始", class: "btn" %>
+        </div>
+    <% end %>
 </div>
+
+<style>
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.field, .actions {
+    margin-bottom: 20px;
+}
+
+.actions .save-button {
+    margin-right: 10px;
+    display: inline-block; /* ボタンを横並びにするためのスタイル */
+}
+
+.delete-button {
+    background-color: #f44336; /* 赤色 */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none; /* リンクの下線を削除 */
+    border-radius: 4px; /* 角を丸くする */
+    margin-right: 10px;
+    display: inline-block; /* ボタンを横並びにするためのスタイル */
+}
+</style>

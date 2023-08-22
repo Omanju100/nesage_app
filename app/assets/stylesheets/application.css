@@ -1,6 +1,4 @@
-/* styles.css */
-
-/* 全体のスタイル設定 */
+/* 一般的なスタイル設定 */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f5f5f5;
@@ -9,7 +7,16 @@ body {
   padding: 0;
 }
 
-/* ヘッダーのスタイル */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
 h1 {
   text-align: center;
   color: #4a4a4a;
@@ -18,7 +25,6 @@ h1 {
   font-size: 24px;
 }
 
-/* リンクのスタイル */
 a {
   color: #4a4a4a;
   text-decoration: none;
@@ -27,6 +33,14 @@ a {
 
 a:hover {
   color: #ffffff;
+}
+
+/* ヘッダーリンク */
+.header-links {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 25px 0;
+  gap: 20px;
 }
 
 .header-links a {
@@ -39,7 +53,7 @@ a:hover {
   background-color: #4a4a4a;
 }
 
-/* フォームのスタイル */
+/* フォーム関連 */
 form {
   margin: 0 5%;
 }
@@ -54,11 +68,18 @@ form {
 
 .field label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   font-weight: bold;
 }
 
-/* アクションボタンのスタイル */
+.field input, .field select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
 .actions {
   text-align: center;
   margin: 20px 0;
@@ -78,21 +99,55 @@ form {
   background-color: #333;
 }
 
-/* 設定の表示スタイル */
-.setting {
-  margin: 20px 0;
+/* 設定カード */
+.setting-card {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.setting p {
-  margin: 5px;
+.setting-card p {
+  margin: 10px 0;
+  flex: 1;
 }
 
-.setting strong {
-  color: #4a4a4a;
+/* 赤いボタンスタイル（統一） */
+.red-button {
+  margin-left: 20px;
+  padding: 8px 12px;
+  background-color: #f44336;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
-.setting a {
-  margin-right: 10px;
+.red-button:hover {
+  background-color: #e32e24;
+}
+
+/* 他のスタイル */
+.price-drop-display {
+  border-top: 2px solid #eee;
+  padding-top: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.price-drop-label {
+  font-weight: bold;
+  color: #666;
+}
+
+.price-drop-value {
+  color: #444;
+  font-size: 1.1em;
 }
 
 /* レスポンシブ対応 */
@@ -105,7 +160,7 @@ form {
     font-size: 22px;
   }
 
-  a {
+  a, .red-button {
     font-size: 14px;
     padding: 4px 12px;
   }
@@ -115,10 +170,6 @@ form {
     padding: 8px;
   }
 
-  .field label {
-    margin-bottom: 8px;
-  }
-
   .actions {
     margin: 15px 0;
   }
@@ -126,69 +177,4 @@ form {
   .actions input[type="submit"] {
     padding: 8px 16px;
   }
-}
-
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
-
-.header-links {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 25px 0;
-  gap: 20px;
-}
-
-.setting-form {
-  margin: 30px 0;
-}
-
-.setting-card {
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 25px;
-  border-radius: 6px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.setting-card p {
-  margin: 10px 0;
-}
-
-.setting-card a {
-  margin-right: 15px;
-}
-
-.field, .actions {
-  margin: 20px 0;
-}
-
-.field label {
-  margin-bottom: 12px;
-}
-
-.field input {
-  width: 100%;  /* 100%から少し減らして調整 */
-  padding: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  box-sizing: border-box;  /* これにより、paddingやborderの幅も全体の幅に含める */
-}
-
-/* プルダウンのスタイル */
-select {
-  width: 100%;  /* 幅を100%にして、親要素の幅に合わせる */
-  padding: 8px;
-  border: 1px solid #e0e0e0;
-  border-radius: 5px;
-  background: #ffffff;
-  box-sizing: border-box;  /* ボーダーやパディングを幅に含める */
-  
-}
-
-/* オプションのスタイルも必要であれば追加 */
-select option {
-  padding: 4px 8px;
 }
