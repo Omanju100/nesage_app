@@ -7,23 +7,31 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  #  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 
   <body>
   
-  <% if flash[:notice] %>
-    <div class="notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
+  <%# 20230902ホーム画面左上メッセージ非表示のために挿入 %>
+  <% if flash[:alert] && flash[:alert] != 'You need to sign in or sign up before continuing.' %>
+  <div class="alert">
+    <%= flash[:alert] %>
+  </div>
+<% end %>
 
-  <% if flash[:alert] %>
-    <div class="alert">
-      <%= flash[:alert] %>
-    </div>
-  <% end %>
+<%# 20230902ホーム画面左上メッセージ非表示のためにコメントアウト %>
+<%# if flash[:notice] %>
+  <%# <div class="notice"> %>
+    <%#= flash[:notice] %>
+  <%# </div> %>
+<%# end %>
+
+<%# if flash[:alert] %>
+  <%# <div class="alert"> %>
+    <%#= flash[:alert] %>
+  <%# </div> %>
+<%# end %>
 
     <%= yield %>
   </body>

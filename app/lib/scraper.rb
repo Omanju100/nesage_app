@@ -23,24 +23,24 @@ class Scraper
     @driver.get('https://jp.mercari.com/')
   
     # ログインリンクをクリック
-    @wait.until { @driver.find_element(:xpath, '//*[@id="__next"]/div/header/div[1]/div/div[4]/nav/div/div[1]/div[2]/div/button').displayed? }
-    @driver.find_element(:xpath, '//*[@id="__next"]/div/header/div[1]/div/div[4]/nav/div/div[1]/div[2]/div/button').click
+    @wait.until { @driver.find_element(:xpath, '//*[@id="__next"]/div/header/div/div/div[4]/nav/div/div[1]/div[1]/div/button').displayed? }
+    @driver.find_element(:xpath, '//*[@id="__next"]/div/header/div/div/div[4]/nav/div/div[1]/div[1]/div/button').click
     
     # 「メール・電話番号でログイン」リンクをクリック
-    @wait.until { @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/div[1]/a').displayed? }
-    @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/div[1]/a').click
+    #@wait.until { @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/div[1]/a').displayed? }
+    #@driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/div[1]/a').click
     
     # メールアドレスを入力するフィールドを見つけて、値を送信
-    @wait.until { @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[1]/div/label/div/input').displayed? }
-    email_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[1]/div/label/div/input')
+    @wait.until { @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/form/div[1]/div/label/div/input').displayed? }
+    email_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/form/div[1]/div/label/div/input')
     email_field.send_keys(email)
     
     # パスワードを入力するフィールドを見つけて、値を送信
-    password_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[2]/div/label/div/input')
+    password_field = @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/form/div[2]/div/label/div/input')
     password_field.send_keys(password)
     
     # ログインボタンをクリック
-    @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/form/div[3]/button').click
+    @driver.find_element(:xpath, '//*[@id="root"]/div/div/div/main/div/div/div[2]/form/div[3]/button').click
     @wait.until { @driver.current_url.include?('https://jp.mercari.com/') }
     
     # ユーザーの商品一覧ページにアクセス
